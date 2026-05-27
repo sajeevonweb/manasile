@@ -6,6 +6,7 @@ import { readFileSync } from 'fs'
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
 
 export default defineConfig({
+  base: '/',
   plugins: [react()],
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
@@ -14,5 +15,8 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+  build: {
+    outDir: 'dist',
   },
 })
