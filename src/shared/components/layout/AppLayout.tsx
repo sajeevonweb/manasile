@@ -80,6 +80,22 @@ export default function AppLayout({ children }: AppLayoutProps) {
             );
           })}
         </nav>
+
+        {/* Version Badge */}
+        <div className={`py-4 border-t border-gray-100 flex ${sidebarExpanded ? 'justify-start px-5' : 'justify-center'}`}>
+          {sidebarExpanded ? (
+            <span className="text-xs text-gray-400 font-mono">
+              v{__APP_VERSION__}
+            </span>
+          ) : (
+            <span
+              className="text-[10px] text-gray-400 font-mono leading-tight text-center"
+              title={`v${__APP_VERSION__}`}
+            >
+              v{__APP_VERSION__}
+            </span>
+          )}
+        </div>
       </aside>
 
       {/* Main Content */}
