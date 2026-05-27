@@ -11,7 +11,6 @@ import {
 import {
   SUPPORTED_LANGUAGES,
   DEFAULT_LANGUAGE,
-  type Language,
 } from '@/core/types/language.types';
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
@@ -78,7 +77,7 @@ interface AssessmentConfigModalProps {
 
 const DEFAULT_FORM = {
   selectedAssessmentType: null as AssessmentType | null,
-  selectedLanguage: DEFAULT_LANGUAGE as Language,
+  selectedLanguage: DEFAULT_LANGUAGE,
   userName: '',
   userNameSubmitted: false,
   whoIsFor: 'myself' as 'myself' | 'someone-else',

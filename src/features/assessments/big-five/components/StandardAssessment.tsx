@@ -82,7 +82,7 @@ export default function StandardAssessment() {
         setCurrentAssessment(assessmentId);
 
         const questionsForLanguage = getStandardQuestions(
-          (assessmentData.language as Language) || 'en'
+          (assessmentData.language) || 'en'
         );
 
         // Load existing responses

@@ -82,7 +82,7 @@ export default function ShortAssessment() {
         setCurrentAssessment(assessmentId);
 
         const questionsForLanguage = getShortQuestions(
-          (assessmentData.language as Language) || 'en'
+          (assessmentData.language) || 'en'
         );
 
         // Load existing responses

@@ -78,7 +78,7 @@ export default function ComprehensiveAssessment() {
         setCurrentAssessment(assessmentId);
 
         const questionsForLanguage = getComprehensiveQuestions(
-          (assessmentData.language as Language) || 'en'
+          (assessmentData.language) || 'en'
         );
 
         // Load existing responses
