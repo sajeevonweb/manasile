@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manasile</title>
+    <script>
+      // GitHub Pages SPA redirect trick
+      // When GH Pages 404s on a deep link, this page encodes the
+      // full path into a query string and redirects to the root.
+      // The index.html then reads it back and restores the URL.
+      var location = window.location;
+      var segmentCount = 0; // 0 for custom domain (manasile.com), 1 for /<repo-name>/ subdomain
+      var query = location.search.slice(1);
+      var path = location.pathname
+        .slice(1)
+        .split('/')
+        .slice(segmentCount)
+        .join('/')
+        .replace(/&/g, '~and~');
+
+      location.replace(
+        location.protocol +
+          '//' +
+          location.hostname +
+          (location.port ? ':' + location.port : '') +
+          location.pathname
+            .split('/')
+            .slice(0, 1 + segmentCount)
+            .join('/') +
+          '/?p=/' +
+          path +
+          (query ? '&q=' + query : '') +
+          (location.hash ? '&h=' + location.hash.slice(1) : '')
+      );
+    </script>
+  </head>
+  <body>
+    <!-- GitHub Pages SPA fallback — redirecting... -->
+  </body>
+</html>
