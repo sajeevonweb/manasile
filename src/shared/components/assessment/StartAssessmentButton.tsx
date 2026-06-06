@@ -63,7 +63,7 @@ export default function StartAssessmentButton({
         onClick={handleClick}
         className={`px-4 py-2 text-cyan-600 bg-cyan-50 border border-cyan-200 rounded-lg hover:bg-cyan-100 transition-colors font-medium ${className}`}
       >
-        Start {categoryInfo.shortName}
+        Start New Assessment
       </button>
     );
   }
@@ -72,7 +72,7 @@ export default function StartAssessmentButton({
     return (
       <button
         onClick={handleClick}
-        className={`group rounded-xl border border-gray-200 bg-white p-6 text-left shadow-sm transition-all duration-200 hover:shadow-md hover:border-gray-300 ${className}`}
+        className={`group rounded-xl border border-gray-200 bg-white p-6 text-left shadow-sm transition-all duration-200 hover:shadow-md hover:border-cyan-600 ${className}`}
       >
         <div className="mb-3 flex items-center">
           <span className="text-3xl">{categoryInfo.icon}</span>
@@ -83,8 +83,8 @@ export default function StartAssessmentButton({
         <p className="mb-4 text-sm text-gray-600 leading-relaxed">
           {categoryInfo.description}
         </p>
-        <div className="inline-flex items-center gap-2 text-sm font-medium text-gray-700 transition-colors duration-200 group-hover:text-gray-900">
-          <span>Start New Assessment</span>
+        <div className="inline-flex items-center gap-2 text-sm font-medium text-cyan-600 transition-colors duration-200">
+          <span className='group-hover:underline'>Start New Assessment</span>
           <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
         </div>
       </button>

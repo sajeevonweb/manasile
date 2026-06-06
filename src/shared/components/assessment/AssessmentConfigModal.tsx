@@ -172,6 +172,8 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
   const requiresSubject =
     form.selectedAssessmentType && ASSESSMENT_TYPES[form.selectedAssessmentType]?.requiresSubjectName;
 
+  const isFormLocked = !form.userNameSubmitted;
+
   const isStartDisabled =
     loading ||
     !form.selectedAssessmentType ||
@@ -217,10 +219,11 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
         {/* Scrollable body */}
         <div className="overflow-y-auto px-4 sm:px-5 py-3 flex-1">
 
-          {/* Step 1 — Name */}
-          {!form.userNameSubmitted ? (
-            <Section label="Your name">
-              <div className="flex gap-2">
+          {/*Only shown for first-time users; returning users skip straight to the form. */}
+          {!form.userNameSubmitted && (
+            <div className="mb-4 p-3 bg-cyan-50 border border-cyan-200 rounded-lg">
+              <p className="text-xs font-semibold text-cyan-700 mb-2">First, what's your name?</p>
+              <div className="flex gap-2 flex-wrap">
                 <input
                   type="text"
                   placeholder="Enter your name"
@@ -229,7 +232,7 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
                   onKeyUp={(e) => {
                     if (e.key === 'Enter' && form.userName.trim()) set({ userNameSubmitted: true });
                   }}
-                  className="flex-1 min-w-0 px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors"
+                  className="flex-1 min-w-[111px] px-3 py-2 text-sm border-2 border-cyan-200 rounded-lg focus:outline-none focus:border-cyan-500 bg-white transition-colors"
                   autoFocus
                 />
                 <button
@@ -240,9 +243,11 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
                   Continue
                 </button>
               </div>
-            </Section>
-          ) : (
-            <>
+            </div>
+          )}
+
+          <div className={isFormLocked ? 'opacity-40 pointer-events-none select-none' : ''}>
+
               {/* Language */}
               <Section label="Language">
                 <div className="grid grid-cols-2 gap-2">
@@ -302,7 +307,9 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
                     >
                       <span className="text-sm font-medium text-gray-900">
                         Myself{' '}
+                        {form.userName && (
                         <span className="font-normal text-gray-400">({form.userName})</span>
+                        )}
                       </span>
                     </RadioCard>
 
@@ -336,13 +343,10 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
                   </div>
                 </Section>
               )}
-            </>
-          )}
+            </div>
         </div>
 
-        {/* Footer actions */}
-        {form.userNameSubmitted && (
-          <>
+            {/* Footer actions — always present so modal height stays stable */}
             <div className="h-px bg-gray-100 flex-shrink-0" />
             <div className="flex gap-2 px-4 sm:px-5 py-3 flex-shrink-0">
               <button
@@ -360,8 +364,6 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
                 {loading ? 'Starting…' : 'Start Assessment'}
               </button>
             </div>
-          </>
-        )}
       </div>
     </div>
   );
