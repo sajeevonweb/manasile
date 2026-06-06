@@ -1,5 +1,6 @@
 // Supported languages in the application
-export type Language = 'en' | 'ml';
+export type Language = 'en';
+// export type Language = 'en' | 'ml';
 
 export interface LanguageInfo {
   code: Language;
@@ -13,11 +14,11 @@ export const SUPPORTED_LANGUAGES: Record<Language, LanguageInfo> = {
     name: 'English',
     nativeName: 'English'
   },
-  ml: {
-    code: 'ml',
-    name: 'Malayalam',
-    nativeName: 'മലയാളം'
-  }
+  // ml: {
+  //   code: 'ml',
+  //   name: 'Malayalam',
+  //   nativeName: 'മലയാളം'
+  // }
 };
 
 // Get language info by code
