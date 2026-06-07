@@ -1,6 +1,4 @@
-import type { PersonalityFacet } from './comprehensive';
-
-export type BigFiveTrait = 'extraversion' | 'agreeableness' | 'conscientiousness' | 'neuroticism' | 'openness';
+import type { PersonalityFacet,BigFiveTrait } from './bigFiveTraits';
 
 export interface StandardQuestion {
   id: string;
@@ -9,38 +7,6 @@ export interface StandardQuestion {
   facet: PersonalityFacet;
   keyed: 'plus' | 'minus';
 }
-
-export const BIG_FIVE_TRAITS: Record<BigFiveTrait, { 
-  name: string; 
-  description: string;
-  color: string;
-}> = {
-  extraversion: {
-    name: 'Extraversion',
-    description: 'Extraversion reflects how socially outgoing, energetic, and expressive a person tends to be.',
-    color: '#F59E0B',
-  },
-  agreeableness: {
-    name: 'Agreeableness',
-    description: 'Agreeableness reflects how compassionate, cooperative, and considerate a person tends to be toward others.',
-    color: '#8B5CF6',
-  },
-  conscientiousness: {
-    name: 'Conscientiousness',
-    description: 'Conscientiousness reflects how organized, responsible, and self-disciplined a person tends to be.',
-    color: '#10B981',
-  },
-  neuroticism: {
-    name: 'Neuroticism',
-    description: 'Neuroticism reflects how strongly a person tends to experience stress, worry, and emotional instability.',
-    color: '#EF4444',
-  },
-  openness: {
-    name: 'Openness to Experience',
-    description: 'Openness to Experience reflects how curious, imaginative, and open to new ideas and experiences a person tends to be',
-    color: '#3B82F6',
-  },
-};
 
 export const QUESTIONS_PER_PAGE = 5;
 
