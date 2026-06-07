@@ -45,14 +45,6 @@ function App() {
             </AppLayout>
           }
         />
-        {/* <Route
-          path="/results/:assessmentId"
-          element={
-            <AppLayout>
-              {currentUserId ? <StandardResultsScreen /> : <Navigate to="/landing" replace />}
-            </AppLayout>
-          }
-        /> */}
         <Route path="/big-five-standard/:assessmentId" element={<StandardAssessment />} />
         <Route path="/big-five-short/:assessmentId" element={<ShortAssessment />} />
         <Route path="/big-five-comprehensive/:assessmentId" element={<ComprehensiveAssessment />} />

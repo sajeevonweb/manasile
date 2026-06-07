@@ -80,7 +80,7 @@ return (
                 className="bg-white rounded-lg shadow p-6 hover:shadow-md transition-shadow cursor-pointer"
                 onClick={() => continueAssessment(assessment)}
               >
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between flex-wrap items-center">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">
                       {ASSESSMENT_TYPES[assessment.assessmentType]?.name || 'Assessment'}
@@ -90,7 +90,7 @@ return (
                         </span>
                       )}
                     </h3>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-sm text-gray-500 mt-1 mb-1">
                       Started {formatDate(assessment.createdAt)}
                     </p>
                   </div>
