@@ -300,7 +300,7 @@ export default function StandardAssessment() {
               type="button"
               onClick={() => void onFinalSubmit()}
               disabled={loading || !allCurrentQuestionsAnswered}
-              className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+              className="px-6 py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
             >
               {loading ? 'Submitting...' : 'Complete Assessment'}
             </button>
