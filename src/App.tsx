@@ -10,12 +10,19 @@ import ResultsRouter from './screens/ResultsRouter';
 import AssessmentConfigModal from './shared/components/assessment/AssessmentConfigModal';
 import { useStore } from './core/store/useStore';
 import ShortAssessment from './features/assessments/big-five/components/ShortAssessment';
+import MoreScreen from './screens/MoreScreen';
+import TermsScreen from './screens/TermsScreen';
+import AboutScreen from './screens/AboutScreen';
+import FeedbackScreen from './screens/FeedbackScreen';
+import FaqScreen from './screens/FaqScreen';
+import ScrollToTop from './shared/components/ScrollToTop';
 
 function App() {
   const { currentUserId, assessmentConfigModal, closeAssessmentConfigModal } = useStore();
   
   return (
     <>
+     <ScrollToTop />
       <Routes>
         <Route
           path="/landing"
@@ -42,6 +49,46 @@ function App() {
           element={
             <AppLayout>
               {currentUserId ? <AllResultsScreen /> : <Navigate to="/landing" replace />}
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/more"
+          element={
+            <AppLayout>
+              {currentUserId ? <MoreScreen /> : <Navigate to="/landing" replace />}
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <AppLayout>
+              <FaqScreen />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/feedback"
+          element={
+            <AppLayout>
+              <FeedbackScreen />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <AppLayout>
+              <AboutScreen />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/terms"
+          element={
+            <AppLayout>
+              <TermsScreen/>
             </AppLayout>
           }
         />
