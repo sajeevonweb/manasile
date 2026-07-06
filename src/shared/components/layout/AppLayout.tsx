@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useStore } from '@/core/store/useStore';
-import { Home, FileText, BarChart3, Menu,PanelLeftClose  } from 'lucide-react';
+import { Home, FileText, BarChart3, Menu,PanelLeftClose,MoreHorizontal  } from 'lucide-react';
 import logo from "@/assets/images/logo.svg";
 
 interface AppLayoutProps {
@@ -21,6 +21,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     { path: '/', icon: Home, label: 'Home' },
     { path: '/assessments', icon: FileText, label: 'Assessments' },
     { path: '/results', icon: BarChart3, label: 'Results' },
+    { path: '/more', icon: MoreHorizontal, label: 'More' },
   ];
 
   return (
