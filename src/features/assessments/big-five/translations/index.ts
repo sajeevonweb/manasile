@@ -9,16 +9,17 @@ import { Comprehensive_QUESTIONS_EN } from './en/comprehensive';
 // import { Comprehensive_QUESTIONS_ML } from './ml/comprehensive';
 import { Short_QUESTIONS_EN } from './en/short';
 // import { Short_QUESTIONS_ML } from './ml/short';
+import { shuffleQuestions } from '../utils/seededShuffle';
 
 // Translation lookup for big-five-standard
 export function getStandardQuestions(language: Language): StandardQuestion[] {
   switch (language) {
     case 'en':
-      return Standard_QUESTIONS_EN;
     // case 'ml':
     //   return Standard_QUESTIONS_ML;
+      return shuffleQuestions(Standard_QUESTIONS_EN);
     default:
-      return Standard_QUESTIONS_EN; // Fallback to English
+      return shuffleQuestions(Standard_QUESTIONS_EN); // Fallback to English
   }
 }
 
@@ -26,11 +27,11 @@ export function getStandardQuestions(language: Language): StandardQuestion[] {
 export function getShortQuestions(language: Language): ShortQuestion[] {
   switch (language) {
     case 'en':
-      return Short_QUESTIONS_EN;
     // case 'ml':
     //   return Short_QUESTIONS_ML;
+      return shuffleQuestions(Short_QUESTIONS_EN);
     default:
-      return Short_QUESTIONS_EN; // Fallback to English
+      return shuffleQuestions(Short_QUESTIONS_EN); // Fallback to English
   }
 }
 
@@ -38,11 +39,11 @@ export function getShortQuestions(language: Language): ShortQuestion[] {
 export function getComprehensiveQuestions(language: Language): ComprehensiveQuestion[] {
   switch (language) {
     case 'en':
-      return Comprehensive_QUESTIONS_EN;
     // case 'ml':
     //   return Comprehensive_QUESTIONS_ML;
+      return shuffleQuestions(Comprehensive_QUESTIONS_EN);
     default:
-      return Comprehensive_QUESTIONS_EN; // Fallback to English
+      return shuffleQuestions(Comprehensive_QUESTIONS_EN); // Fallback to English
   }
 }
 
