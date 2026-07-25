@@ -81,7 +81,7 @@ export default function FeedbackScreen() {
                 <span className="text-xs font-medium text-gray-600">{FEEDBACK_EMAIL}</span>
                 <button
                   type="button"
-                  onClick={handleCopyEmail}
+                  onClick={() => void handleCopyEmail()}
                   className="inline-flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-700 shrink-0"
                   title="Copy email address"
                 >

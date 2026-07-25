@@ -72,6 +72,7 @@ export default function MoreScreen() {
   const [editName, setEditName] = useState('');
   const [saving, setSaving] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [logoutModalKey, setLogoutModalKey] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Load profile
@@ -153,6 +154,11 @@ export default function MoreScreen() {
     if (e.key === 'Escape') setIsEditing(false);
   };
 
+  const openLogoutModal = () => {
+    setLogoutModalKey((k) => k + 1); // forces a fresh modal instance, guaranteeing reset state
+    setShowLogoutModal(true);
+  };
+
   if (!profile) return null;
 
   return (
@@ -225,14 +231,12 @@ export default function MoreScreen() {
       {/* ── Menu items ── */}
       <div className="bg-white rounded-xl shadow overflow-hidden">
         {MENU_ITEMS.map((item, idx) => {
-  const isLogout = item.id === 'logout';
+          const isLogout = item.id === 'logout';
 
           return (
             <button
               key={item.id}
-              onClick={() =>
-                isLogout ? setShowLogoutModal(true) : navigate(item.route)
-              }
+              onClick={() => (isLogout ? openLogoutModal() : navigate(item.route))}
               className={`w-full flex items-center gap-4 px-5 py-4 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors ${idx < MENU_ITEMS.length - 1 ? 'border-b border-gray-100' : ''
                 }`}
             >
@@ -262,10 +266,12 @@ export default function MoreScreen() {
 
       {/* App version */}
       <p className="text-center text-xs text-gray-400 mt-6">v{__APP_VERSION__}</p>
-      <LogoutConfirmModal
-        isOpen={showLogoutModal}
-        onClose={() => setShowLogoutModal(false)}
-      />
+      {showLogoutModal && (
+        <LogoutConfirmModal
+          key={logoutModalKey}
+          onClose={() => setShowLogoutModal(false)}
+        />
+      )}
     </div>
   );
 }

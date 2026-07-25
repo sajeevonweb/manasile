@@ -14,8 +14,13 @@ import { ASSESSMENT_TYPES } from '@/core/types/assessment.types';
 import type { Assessment, BigFiveScores } from '@/core/db/database';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: { payload: { name: string; value: number; color: string } }[];
+}
+
 // ─── Custom Tooltip for doughnut chart ───────────────────────────────────────
-const CustomTooltip = ({ active, payload }: any) => {
+const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     const { name, value, color } = payload[0].payload;
     return (

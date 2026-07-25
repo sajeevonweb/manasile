@@ -1,27 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
 import { db } from '@/core/db/database';
 
 const CONFIRM_WORD = 'logout';
 
 interface LogoutConfirmModalProps {
-  isOpen: boolean;
   onClose: () => void;
 }
 
-export default function LogoutConfirmModal({ isOpen, onClose }: LogoutConfirmModalProps) {
+export default function LogoutConfirmModal({ onClose }: LogoutConfirmModalProps) {
   const [confirmText, setConfirmText] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  // Reset fields every time the modal opens
-  useEffect(() => {
-    if (isOpen) {
-      setConfirmText('');
-      setError(null);
-      setLoading(false);
-    }
-  }, [isOpen]);
 
   const handleClose = () => {
     if (loading) return;
@@ -52,8 +42,6 @@ export default function LogoutConfirmModal({ isOpen, onClose }: LogoutConfirmMod
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && isConfirmMatch) void handleLogout();
   };
-
-  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">

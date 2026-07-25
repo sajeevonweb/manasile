@@ -77,7 +77,7 @@ export const getScoreBandLabel = (band: ScoreBand): { label: string; className: 
       return { label: 'Lower tendency', className: 'bg-gray-100 text-gray-800' };
     default: {
       const _exhaustive: never = band;
-      throw new Error(`Unhandled ScoreBand: ${_exhaustive}`);
+      throw new Error(`Unhandled ScoreBand: ${String(_exhaustive)}`);
     }
   }
 };
