@@ -137,7 +137,7 @@ export default function LandingScreen() {
                             style={{ width: `${value}%`, backgroundColor: BIG_FIVE_TRAITS[key].color }}
                           />
                         </div>
-                        <span className="text-sm font-medium text-gray-700 w-7 text-right">{value}</span>
+                        <span className="text-sm font-medium text-gray-700 w-7 text-right">{value}%</span>
                       </div>
                     </div>
                   ))}

@@ -14,6 +14,12 @@ const MENU_ITEMS = [
     icon: <Info className="w-5 h-5" />,
     route: '/about',
   },
+  //{
+  //   id: 'export',
+  //   label: 'Export Data',
+  //   icon: <ArrowDownToLine className="w-5 h-5" />,
+  //   route: '/export',
+  // },
   {
     id: 'faq',
     label: 'FAQ',
