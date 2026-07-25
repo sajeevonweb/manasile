@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../core/db/database';
 import { useStore } from '../core/store/useStore';
-import StandardResultsScreen from '../features/assessments/big-five/components/StandardResultsScreen';
-import ComprehensiveResultsScreen from '../features/assessments/big-five/components/ComprehensiveResultsScreen';
 import type { Assessment } from '../core/db/database';
-import ShortResultsScreen from '../features/assessments/big-five/components/ShortResultsScreen';
+import BigFiveResultsScreen from '@/features/assessments/big-five/components/ResultsScreen';
 
 export default function ResultsRouter() {
   const { assessmentId } = useParams<{ assessmentId: string }>();
@@ -76,15 +74,13 @@ export default function ResultsRouter() {
   }
 
   // Render appropriate results screen based on assessment type
-  if (assessment.assessmentType === 'big-five-comprehensive') {
-    return <ComprehensiveResultsScreen />;
-  }
+  switch (assessment.assessmentType) {
+  case 'big-five-comprehensive':
+  case 'big-five-standard':
+  case 'big-five-short':
+    return <BigFiveResultsScreen />;
 
-  if (assessment.assessmentType === 'big-five-standard') {
-    return <StandardResultsScreen />;
-  }
-
-  if (assessment.assessmentType === 'big-five-short') {
-    return <ShortResultsScreen />;
-  }
+  default:
+    return <div>Unsupported assessment type</div>;
+}
 }
