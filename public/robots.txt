@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /landing
+Allow: /about
+Allow: /faq
+Allow: /terms
+Disallow: /big-five-standard/
+Disallow: /big-five-short/
+Disallow: /big-five-comprehensive/
+Disallow: /results/
+Disallow:/feedback
+
+Sitemap: https://manasile.com/sitemap.xml

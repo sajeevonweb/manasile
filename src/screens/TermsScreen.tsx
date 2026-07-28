@@ -1,10 +1,12 @@
 import { Link,useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
+import SEO from '@/shared/components/SEO';
 
 export default function TermsScreen() {
     const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="Terms & Conditions | Manasile" description="Read the Terms and Conditions of using Manasile psychological assessment platform." />
       <div className="mx-auto px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         <button
           type="button"

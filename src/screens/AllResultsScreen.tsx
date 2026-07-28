@@ -5,6 +5,7 @@ import { useStore } from '../core/store/useStore';
 import { BIG_FIVE_TRAITS } from '../features/assessments/big-five/data/bigFiveTraits';
 import { getDisplayPercentage, getTestVersion } from '../features/assessments/big-five/data/bigFiveScoreBands';
 import type { Assessment } from '../core/db/database';
+import SEO from '@/shared/components/SEO';
 
 const TRAIT_KEYS = ['openness','conscientiousness','extraversion', 'agreeableness','neuroticism', ] as const;
 
@@ -45,6 +46,7 @@ export default function AllResultsScreen() {
 
   return (
     <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <SEO title="My Results | Manasile" />
       <div className="mb-4">
         <h1 className="text-2xl font-bold text-gray-900 mb-1">All Results</h1>
         <p className="text-sm text-gray-600">View your completed assessment results</p>

@@ -6,6 +6,7 @@ import { ASSESSMENT_TYPES } from '../core/types/assessment.types';
 import type { Assessment } from '../core/db/database';
 import StartAssessmentButton from '../shared/components/assessment/StartAssessmentButton';
 import AssessmentConfigModal from '../shared/components/assessment/AssessmentConfigModal';
+import SEO from '@/shared/components/SEO';
 
 export default function AssessmentsScreen() {
   const { currentUserId, assessmentConfigModal, closeAssessmentConfigModal } = useStore();
@@ -56,6 +57,7 @@ export default function AssessmentsScreen() {
 
 return (
   <>
+    <SEO title="Personality Assessments | Manasile" />
     <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Assessments</h1>

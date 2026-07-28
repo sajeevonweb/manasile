@@ -6,6 +6,7 @@ import { ASSESSMENT_TYPES } from '../core/types/assessment.types';
 import type { Assessment } from '../core/db/database';
 import StartAssessmentButton from '../shared/components/assessment/StartAssessmentButton';
 import AssessmentConfigModal from '../shared/components/assessment/AssessmentConfigModal';
+import SEO from '@/shared/components/SEO';
 
 export default function HomeScreen() {
   const { currentUserId, assessmentConfigModal, closeAssessmentConfigModal } = useStore();
@@ -70,6 +71,7 @@ export default function HomeScreen() {
 
   return (
     <>
+      <SEO title="Home | Manasile" />
       <div className="min-h-screen bg-gray-50">
         <div className="mx-auto px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
           

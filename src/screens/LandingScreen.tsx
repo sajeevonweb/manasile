@@ -6,6 +6,7 @@ import { BIG_FIVE_TRAITS } from '../features/assessments/big-five/data/bigFiveTr
 import { faqItems } from '@/shared/data/faqData';
 import { Link } from 'react-router-dom';
 import heroImage from "../assets/images/hero-image.webp";
+import SEO from '@/shared/components/SEO';
 
 const traits = [
   { label: 'Openness', value: 78, key: 'openness' },
@@ -71,10 +72,20 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 export default function LandingScreen() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <SEO
+        title="Manasile - Free Big Five Personality Test"
+        description="Take free Big Five personality tests based on the Five-Factor Model. Choose from Short, Standard, or Comprehensive assessments. No sign-up required and your results stay on your device."
+      />
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm px-6 py-3 flex items-center">
-        <img src={logo} alt="Manasile Logo" className="w-36 h-auto" />
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm px-6 py-3 flex flex-wrap items-center justify-between">
+        <Link to="/landing" className="flex items-center">
+          <img src={logo} alt="Manasile Logo" className="w-36 h-auto" />
+        </Link>
+        <nav className="flex items-center gap-4 sm:gap-6">
+          <Link to="/about" className="text-sm font-medium text-gray-600 hover:text-cyan-600 transition-colors">About</Link>
+          <Link to="/faq" className="text-sm font-medium text-gray-600 hover:text-cyan-600 transition-colors">FAQ</Link>
+        </nav>
       </header>
 
       {/* Page body */}
@@ -173,13 +184,21 @@ export default function LandingScreen() {
           </div>
 
           {/* Footer */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-gray-200">
             <p className="text-xs text-gray-400">
               All your data is stored locally on your device
             </p>
-            <Link to="/terms" className="text-xs text-gray-400 hover:text-cyan-600 underline">
-              Terms & Conditions
-            </Link>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <Link to="/about" className="text-xs text-gray-400 hover:text-cyan-600 underline">
+                About
+              </Link>
+              <Link to="/faq" className="text-xs text-gray-400 hover:text-cyan-600 underline">
+                FAQ
+              </Link>
+              <Link to="/terms" className="text-xs text-gray-400 hover:text-cyan-600 underline">
+                Terms & Conditions
+              </Link>
+            </div>
           </div>
         </div>
       </div>

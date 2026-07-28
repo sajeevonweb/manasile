@@ -5,6 +5,7 @@ import { useStore } from '../core/store/useStore';
 import type { UserProfile } from '../core/db/database';
 import LogoutConfirmModal from '../shared/components/account/LogoutConfirmModal';
 import {Info,CircleHelp,MessageSquare,FileText, LogOut} from 'lucide-react';
+import SEO from '@/shared/components/SEO';
 
 // Menu item definitions 
 const MENU_ITEMS = [
@@ -163,6 +164,7 @@ export default function MoreScreen() {
 
   return (
   <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <SEO title="More Options | Manasile" />
       {/* Page title */}
       <div className="mb-4">
         <h1 className="text-2xl font-bold text-gray-900 mb-1">More</h1>

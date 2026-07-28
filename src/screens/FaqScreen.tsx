@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronDown } from 'lucide-react';
 import { faqItems } from '@/shared/data/faqData';
+import SEO from '@/shared/components/SEO';
 
 export default function FaqScreen() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function FaqScreen() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="Frequently Asked Questions | Manasile" description="Find answers to common questions about Manasile assessments, privacy, pricing, and more." />
       <div className="mx-auto px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         <button
           type="button"

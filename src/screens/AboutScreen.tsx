@@ -1,10 +1,15 @@
 import { Link,useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
+import SEO from '@/shared/components/SEO';
 
 export default function AboutScreen() {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="About Manasile | Big Five Personality Tests"
+        description="Learn about Manasile, our approach to Big Five personality testing, and our commitment to free, privacy-first assessments with no sign-up required."
+      />      
       <div className="mx-auto  px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         <button
           type="button"
