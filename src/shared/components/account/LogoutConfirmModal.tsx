@@ -44,13 +44,13 @@ export default function LogoutConfirmModal({ onClose }: LogoutConfirmModalProps)
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50" onClick={handleClose} />
 
       {/* Bottom sheet on mobile → centered card on sm+ */}
       <div
-        className="relative bg-white w-full sm:max-w-sm sm:rounded-xl rounded-t-2xl shadow-2xl flex flex-col max-h-[92dvh]"
+        className="relative bg-white w-full m-4 max-w-sm rounded-xl rounded-t-2xl shadow-2xl flex flex-col max-h-[92dvh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile drag handle */}
@@ -68,7 +68,7 @@ export default function LogoutConfirmModal({ onClose }: LogoutConfirmModalProps)
           <p className="text-sm text-gray-500 mt-1.5 leading-relaxed">
             Manasile stores everything only on this device. Logging out will{' '}
             <strong className="text-gray-700">permanently delete</strong> your profile and every
-            assessment you've taken. This can't be undone — there's no backup or account to
+            assessment you've taken. This can't be undone, there's no backup or account to
             recover it from.
           </p>
         </div>
