@@ -15,6 +15,8 @@ interface AppState {
   assessmentConfigModal: AssessmentConfigModalState;
   setAssessmentConfigModal: (state: AssessmentConfigModalState) => void;
   closeAssessmentConfigModal: () => void;
+  hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
 
 export const useStore = create<AppState>()(
@@ -27,14 +29,19 @@ export const useStore = create<AppState>()(
       assessmentConfigModal: { isOpen: false },
       setAssessmentConfigModal: (state) => set({ assessmentConfigModal: state }),
       closeAssessmentConfigModal: () => set({ assessmentConfigModal: { isOpen: false } }),
+      hasHydrated: false,
+      setHasHydrated: (state) => set({ hasHydrated: state }),
     }),
     {
       name: 'app-storage',
-      // Don't persist modal state
+      // Don't persist modal state or hydration flag
       partialize: (state) => ({
         currentUserId: state.currentUserId,
         currentAssessment: state.currentAssessment,
       }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

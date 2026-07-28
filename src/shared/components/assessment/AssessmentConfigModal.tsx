@@ -87,11 +87,12 @@ const DEFAULT_FORM = {
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function AssessmentConfigModal({ isOpen, onClose, category }: AssessmentConfigModalProps) {
-  const { currentUserId, setCurrentUserId } = useStore();
+  const { currentUserId, setCurrentUserId, hasHydrated } = useStore();
   const navigate = useNavigate();
   const uid = useId(); // stable per mount; makes radio names unique across open/close cycles
 
   const [loading, setLoading] = useState(false);
+  const [checkingProfile, setCheckingProfile] = useState(true);
   const [form, setForm] = useState(DEFAULT_FORM);
   const set = (patch: Partial<typeof DEFAULT_FORM>) => setForm((f) => ({ ...f, ...patch }));
 
@@ -102,7 +103,9 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
   // Reset / pre-fill on open only
   useEffect(() => {
     if (!isOpen) return;
+    if (!hasHydrated) return;
 
+    setCheckingProfile(true);
     setForm({ ...DEFAULT_FORM, selectedAssessmentType: availableTests[0] ?? null });
 
     if (currentUserId) {
@@ -111,11 +114,13 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
         .then((profile) => {
           if (profile) setForm((f) => ({ ...f, userName: profile.name, userNameSubmitted: true }));
         })
-        .catch(console.error);
+        .catch(console.error)
+        .finally(() => setCheckingProfile(false));
+    } else {
+      setCheckingProfile(false);
     }
-    // Only run when the modal opens — not on every render of availableTests / currentUserId
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, hasHydrated]);
 
   const handleClose = () => {
     if (loading) return;
@@ -172,10 +177,11 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
   const requiresSubject =
     form.selectedAssessmentType && ASSESSMENT_TYPES[form.selectedAssessmentType]?.requiresSubjectName;
 
-  const isFormLocked = !form.userNameSubmitted;
+  const isFormLocked = !form.userNameSubmitted || checkingProfile;
 
   const isStartDisabled =
     loading ||
+    checkingProfile ||
     !form.selectedAssessmentType ||
     !form.userNameSubmitted ||
     Boolean(requiresSubject && form.whoIsFor === 'someone-else' && !form.otherName.trim());
@@ -219,8 +225,8 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
         {/* Scrollable body */}
         <div className="overflow-y-auto px-4 sm:px-5 py-3 flex-1">
 
-          {/*Only shown for first-time users; returning users skip straight to the form. */}
-          {!form.userNameSubmitted && (
+          {/*Only shown for first-time users;*/}
+          {!form.userNameSubmitted && !checkingProfile && (
             <div className="mb-4 p-3 bg-cyan-50 border border-cyan-200 rounded-lg">
               <p className="text-xs font-semibold text-cyan-700 mb-2">First, what's your name?</p>
               <div className="flex gap-2 flex-wrap">
