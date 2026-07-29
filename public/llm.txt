@@ -1,7 +1,6 @@
 # Manasile
 
-Manasile is a free, privacy-first assessment platform. It currently offers Big Five personality assessments based on the Five-Factor Model (FFM), with additional assessments planned in the future. No account is required, and all assessment data remains on the user's device.
-
+Manasile is a free, privacy-first assessment platform. It currently offers assessments based on the Five-Factor Model (FFM), with no sign-up or email registration required. All responses and results are stored locally on the user's device and are never uploaded, ensuring complete privacy.
 ## Current Assessments
 
 ### Big Five Personality Assessment
@@ -20,12 +19,12 @@ Available in three versions:
 - **Standard** – 50 questions
 - **Comprehensive** – 120 questions
 
-## Privacy
+## Privacy & Security
 
-- No sign-up required
-- No user accounts
-- No tracking or advertising
-- All responses and results are stored locally on the user's device
+- **No Sign-Up or Email Required:** Start taking the assessment instantly without registering.
+- **Optional Local Nickname:** Users can enter a nickname to personalize results, but this information is stored purely in the local browser.
+- **Zero Databases:** We do not run any backend servers or databases. Your data cannot be tracked, leaked, or sold because we never receive it.
+- **Local Storage:** All responses and results are saved in the client's local browser storage.
 
 ## Public Pages
 

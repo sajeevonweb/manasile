@@ -7,7 +7,7 @@ export default function AboutScreen() {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="About Manasile | Big Five Personality Tests"
+        title="About | Private Big Five Personality Test - Manasile"
         description="Learn about Manasile, our approach to Big Five personality testing, and our commitment to free, privacy-first assessments with no sign-up required."
       />      
       <div className="mx-auto  px-4 py-6 sm:px-6 sm:py-10 lg:px-8">

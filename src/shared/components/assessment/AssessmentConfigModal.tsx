@@ -228,11 +228,11 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
           {/*Only shown for first-time users;*/}
           {!form.userNameSubmitted && !checkingProfile && (
             <div className="mb-4 p-3 bg-cyan-50 border border-cyan-200 rounded-lg">
-              <p className="text-xs font-semibold text-cyan-700 mb-2">First, what's your name?</p>
+              <p className="text-xs font-semibold text-cyan-700 mb-2">First, what's your name or nickname?</p>
               <div className="flex gap-2 flex-wrap">
                 <input
                   type="text"
-                  placeholder="Enter your name"
+                  placeholder="Enter name or nickname"
                   value={form.userName}
                   onChange={(e) => set({ userName: e.target.value })}
                   onKeyUp={(e) => {
@@ -332,7 +332,7 @@ export default function AssessmentConfigModal({ isOpen, onClose, category }: Ass
                       <div className="pl-6 space-y-2 pt-1">
                         <input
                           type="text"
-                          placeholder="Their name"
+                          placeholder="Their name or nickname"
                           value={form.otherName}
                           onChange={(e) => set({ otherName: e.target.value })}
                           onKeyUp={(e) => {

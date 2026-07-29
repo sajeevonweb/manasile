@@ -73,8 +73,8 @@ export default function LandingScreen() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <SEO
-        title="Manasile - Free Big Five Personality Test"
-        description="Take free Big Five personality tests based on the Five-Factor Model. Choose from Short, Standard, or Comprehensive assessments. No sign-up required and your results stay on your device."
+        title="Private Big Five Personality Test (No Sign-Up) | Manasile"
+        description="Take a 100% private Big Five personality test with no sign-up or email required. Your responses and results stay locally on your device for absolute privacy."
       />
 
       {/* Header */}
@@ -177,7 +177,7 @@ export default function LandingScreen() {
           <div className="mb-10">
             <h2 className="text-base font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
             <div className="space-y-2">
-              {faqItems.slice(0, 5).map(({ q, a }) => (
+              {faqItems.slice(0, 6).map(({ q, a }) => (
                 <FaqItem key={q} question={q} answer={a} />
               ))}
             </div>
