@@ -25,22 +25,22 @@ function App() {
      <ScrollToTop />
       <Routes>
         <Route
-          path="/landing"
-          element={currentUserId ? <Navigate to="/" replace /> : <LandingScreen />}
-        />
-        <Route
           path="/"
           element={
-            <AppLayout>
-              {currentUserId ? <HomeScreen /> : <Navigate to="/landing" replace />}
-            </AppLayout>
+            currentUserId ? (
+              <AppLayout>
+                <HomeScreen />
+              </AppLayout>
+            ) : (
+              <LandingScreen />
+            )
           }
         />
         <Route
           path="/assessments"
           element={
             <AppLayout>
-              {currentUserId ? <AssessmentsScreen /> : <Navigate to="/landing" replace />}
+              {currentUserId ? <AssessmentsScreen /> : <Navigate to="/" replace />}
             </AppLayout>
           }
         />
@@ -48,7 +48,7 @@ function App() {
           path="/results"
           element={
             <AppLayout>
-              {currentUserId ? <AllResultsScreen /> : <Navigate to="/landing" replace />}
+              {currentUserId ? <AllResultsScreen /> : <Navigate to="/" replace />}
             </AppLayout>
           }
         />
@@ -56,7 +56,7 @@ function App() {
           path="/more"
           element={
             <AppLayout>
-              {currentUserId ? <MoreScreen /> : <Navigate to="/landing" replace />}
+              {currentUserId ? <MoreScreen /> : <Navigate to="/" replace />}
             </AppLayout>
           }
         />
@@ -99,7 +99,7 @@ function App() {
           path="/results/:assessmentId"
           element={
             <AppLayout>
-              {currentUserId ? <ResultsRouter /> : <Navigate to="/landing" replace />}
+              {currentUserId ? <ResultsRouter /> : <Navigate to="/" replace />}
             </AppLayout>
           }
         />
